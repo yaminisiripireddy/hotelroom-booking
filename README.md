@@ -21,9 +21,4 @@ This project demonstrates strong fundamentals in C programming and logical probl
 
 ## 🛠 Technologies Used
 - C Programming Language
-- GCC Compiler
-- Command Line / Terminal
 
----
-
-## 📂 File Structure
