@@ -15,7 +15,7 @@ int main() {
     int rooms, option, days;
     char name[50];
 
-    printf("===== Welcome to Venkeshwara Hotels =====\n\n");
+    printf("===== Welcome to Sri Venkateshwara Hotels =====\n\n");
 
     printf("Enter your name: ");
     scanf(" %[^\n]", name);
@@ -60,3 +60,4 @@ int main() {
 
     return 0;
 }
+
