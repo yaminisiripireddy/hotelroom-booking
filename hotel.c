@@ -1,72 +1,62 @@
 #include <stdio.h>
 
-int cost(int option) {
-    int price;
-    // Determine price based on room option
-    if (option == 1) {
-        price = 5000;  
+// Function to return price per room based on option
+int getRoomPrice(int option) {
+    switch (option) {
+        case 1: return 5000;  // Deluxe Room
+        case 2: return 1500;  // Single Room
+        case 3: return 2500;  // Double Room
+        case 4: return 3500;  // Triple Room
+        default: return 0;
     }
-    else if (option == 2) {
-        price = 500;   
-    }
-    else if (option == 3) {
-        price = 1000; 
-    }
-    else if (option == 4) {
-        price = 2000;  
-    }
-    else {
-        price = 0;    
-    }
-    return price;
 }
 
 int main() {
-    int n, option, days;
-    char name[50]; 
-    
-    printf("Enter how many rooms you want to book: ");
-    scanf("%d", &n);  
-    
-    printf("Enter your name: ");
-    scanf("%s", name); 
-    
-    printf("1. Deluxe room\n");
-    printf("2. Single room\n");
-    printf("3. Double room\n");
-    printf("4. Triple room\n");
-    
-    printf("Enter which room you want to book: ");
-    scanf("%d", &option); 
+    int rooms, option, days;
+    char name[50];
 
-    printf("Enter number of days you plan to stay: ");
-    scanf("%d", &days); 
-    
-    switch(option) {
-        case 1:
-            printf("Thanks for booking a Deluxe room at Venkeshwara Hotels, %s!\n", name);
-            break;
-        case 2:
-            printf("Thanks for booking a Single room at Venkeshwara Hotels, %s!\n", name);
-            break;
-        case 3:
-            printf("Thanks for booking a Double room at Venkeshwara Hotels, %s!\n", name);
-            break;
-        case 4:
-            printf("Thanks for booking a Triple room at Venkeshwara Hotels, %s!\n", name);
-            break;
-        default:
-            printf("Invalid room booking selection.\n");
-            return 1; 
+    printf("===== Welcome to Venkeshwara Hotels =====\n\n");
+
+    printf("Enter your name: ");
+    scanf(" %[^\n]", name);
+
+    printf("Enter number of rooms to book: ");
+    scanf("%d", &rooms);
+
+    printf("Enter number of days to stay: ");
+    scanf("%d", &days);
+
+    // Validation
+    if (rooms <= 0 || days <= 0) {
+        printf("Invalid number of rooms or days.\n");
+        return 1;
     }
-    int room_price = cost(option);
-    if (room_price != 0) {
-        int total_cost = room_price * n * days;
-        printf("Total cost for %d rooms for %d days is: %d\n", n, days, total_cost);
-    } else {
+
+    printf("\nSelect Room Type:\n");
+    printf("1. Deluxe Room   - Rs.5000 per day\n");
+    printf("2. Single Room   - Rs.1500 per day\n");
+    printf("3. Double Room   - Rs.2500 per day\n");
+    printf("4. Triple Room   - Rs.3500 per day\n");
+
+    printf("Enter your choice: ");
+    scanf("%d", &option);
+
+    int pricePerRoom = getRoomPrice(option);
+
+    if (pricePerRoom == 0) {
         printf("Invalid room selection.\n");
+        return 1;
     }
+
+    int totalCost = pricePerRoom * rooms * days;
+
+    printf("\nThank you %s for booking with us!\n", name);
+    printf("Rooms booked : %d\n", rooms);
+    printf("Days staying : %d\n", days);
+    printf("Total amount : Rs.%d\n", totalCost);
+
+    printf("\nWe hope you enjoy your stay!\n");
+    printf("========================================\n");
 
     return 0;
 }
-
